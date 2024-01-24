@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
   getDocs,
-  collection,
   addDoc,
   deleteDoc,
   doc,
@@ -14,11 +13,8 @@ import { db } from "../Config/firebaseConfig";
 
 function Home(props) {
   const [Coins, setCoins] = useState([]);
-  // const [MyCrypto, setMyCrypto] = useState([]);
   const [ErrMsg, setErrMsg] = useState("");
   const [addedCoinIds, setAddedCoinIds] = useState([]);
-
-  // const CryptoCoinCollectionRef = collection(db, "MyCrypto");
 
   const fetchCoins = async () => {
     try {
@@ -31,22 +27,11 @@ function Home(props) {
     }
   };
 
-  // const fetchMyCrypto = async () => {
-  //   try {
-  //     const rowDocs = await getDocs(props.CryptoCoinCollectionRef);
-  //     const docs = rowDocs.docs.map((doc) => {
-  //       return { ...doc.data(), id: doc.id };
-  //     });
-  //     props.setCryptos(docs);
-  //     setAddedCoinIds(docs.map((crypto) => crypto.id));
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-
   useEffect(() => {
     props.getMyCrypto();
-  }, [props.user]);
+  }, [props.user, Coins]);
+
+  // console.log(props.Cryptos);
 
   const submitHandler = async (crypto) => {
     try {
@@ -81,7 +66,6 @@ function Home(props) {
   };
 
   const RemoveCryptoCoin = async (crypto) => {
-    console.log(crypto.id);
     try {
       const q = query(
         props.CryptoCoinCollectionRef,
@@ -98,8 +82,6 @@ function Home(props) {
 
       props.setCryptos(filtered);
 
-      // setAddedCoinIds((prevIds) => prevIds.filter((id) => id !== crypto.id));
-
       setCoins((prevCoins) =>
         prevCoins.map((item) =>
           item.id === crypto.id ? { ...item, isAdded: false } : item
@@ -114,11 +96,6 @@ function Home(props) {
     fetchCoins();
   }, []);
 
-  /**
-   * use useEffect on the props.cryptos array is changed
-   * run over the coins and add the isAdded key to
-   * the coin object
-   */
   const isIsFavorite = (id) => {
     for (let i = 0; i < props.Cryptos.length; i++) {
       const element = props.Cryptos[i];
@@ -138,17 +115,18 @@ function Home(props) {
   }, [props.Cryptos, props.user]);
 
   return (
-    <div>
-      {Coins.map((item, i) => (
-        <CoinCard
-          Coins={item}
-          RemoveCryptoCoin={RemoveCryptoCoin}
-          submitHandler={submitHandler}
-          // isAdded={addedCoinIds.includes(item.id)}
-          key={`co_${i}`}
-        />
-      ))}
-    </div>
+    props.Cryptos && (
+      <div>
+        {Coins.map((item, i) => (
+          <CoinCard
+            Coins={item}
+            RemoveCryptoCoin={RemoveCryptoCoin}
+            submitHandler={submitHandler}
+            key={`co_${i}`}
+          />
+        ))}
+      </div>
+    )
   );
 }
 

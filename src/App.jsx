@@ -39,7 +39,6 @@ function App() {
   const getMyCrypto = async () => {
     try {
       if (!user) {
-        // Handle the case when user is null (e.g., show a message or redirect)
         return;
       }
       const q = query(CryptoCoinCollectionRef, where("user", "==", user.uid));
@@ -54,7 +53,7 @@ function App() {
     }
   };
 
-  console.log(user);
+  // console.log(user);
 
   return (
     <BrowserRouter>

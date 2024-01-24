@@ -1,7 +1,13 @@
-function CoinCard(props) {
-  const isCryptoAdded = props.Coins.isAdded;
+import { useEffect, useState } from "react";
 
+function CoinCard(props) {
+  // const isCryptoAdded = props.Coins.isAdded;
+  const [isCryptoAdded, setisCryptoAdded] = useState(false);
   // console.log(isCryptoAdded);
+
+  useEffect(() => {
+    setisCryptoAdded(props.Coins.isAdded);
+  }, [props]);
 
   return (
     <div>
