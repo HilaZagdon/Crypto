@@ -18,6 +18,7 @@ import Navbar from "./components/NavBar";
 import Auth from "./pages/Auth";
 import MyCrypto from "./pages/MyCrypto";
 import SingleCoin from "./pages/SingleCoin";
+import NotFound from "./components/NotFound";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -58,45 +59,54 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar user={user} />
-      <Routes>
-        <Route
-          path="/home"
-          element={
-            <Home
-              setCryptos={setCryptos}
-              Cryptos={Cryptos}
-              getMyCrypto={getMyCrypto}
-              user={user}
-              CryptoCoinCollectionRef={CryptoCoinCollectionRef}
-            />
-          }
-        />
+      {user ? (
+        <Routes>
+          <Route
+            path="/home"
+            element={
+              <Home
+                setCryptos={setCryptos}
+                Cryptos={Cryptos}
+                getMyCrypto={getMyCrypto}
+                user={user}
+                CryptoCoinCollectionRef={CryptoCoinCollectionRef}
+              />
+            }
+          />
 
-        <Route path="/coins/:coinId" element={<SingleCoin />} />
-        <Route
-          path="/myCrypto"
-          element={
-            <MyCrypto
-              setCryptos={setCryptos}
-              Cryptos={Cryptos}
-              getMyCrypto={getMyCrypto}
-              user={user}
-              CryptoCoinCollectionRef={CryptoCoinCollectionRef}
-            />
-          }
-        />
-        <Route
-          path="/authentication"
-          element={
-            <Auth
-              CryptoCoinCollectionRef={CryptoCoinCollectionRef}
-              setCryptos={setCryptos}
-              Cryptos={Cryptos}
-              setUser={setUser}
-            />
-          }
-        />
-      </Routes>
+          <Route path="/coins/:coinId" element={<SingleCoin />} />
+          <Route
+            path="/myCrypto"
+            element={
+              <MyCrypto
+                setCryptos={setCryptos}
+                Cryptos={Cryptos}
+                getMyCrypto={getMyCrypto}
+                user={user}
+                CryptoCoinCollectionRef={CryptoCoinCollectionRef}
+              />
+            }
+          />
+          <Route
+            path="/authentication"
+            element={
+              <Auth
+                CryptoCoinCollectionRef={CryptoCoinCollectionRef}
+                setCryptos={setCryptos}
+                Cryptos={Cryptos}
+                setUser={setUser}
+              />
+            }
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      ) : (
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/auth" element={<Auth />}></Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      )}
     </BrowserRouter>
   );
 }
