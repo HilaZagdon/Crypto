@@ -17,6 +17,7 @@ import { db, auth } from "./Config/firebaseConfig";
 import Navbar from "./components/NavBar";
 import Auth from "./pages/Auth";
 import MyCrypto from "./pages/MyCrypto";
+import SingleCoin from "./pages/SingleCoin";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -46,7 +47,6 @@ function App() {
       const docs = rowDocs.docs.map((doc) => {
         return { ...doc.data(), uid: doc.id };
       });
-      console.table(docs);
       setCryptos(docs);
     } catch (err) {
       console.error(err);
@@ -71,6 +71,8 @@ function App() {
             />
           }
         />
+
+        <Route path="/coins/:coinId" element={<SingleCoin />} />
         <Route
           path="/myCrypto"
           element={

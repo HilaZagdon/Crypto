@@ -1,30 +1,32 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function CoinCard(props) {
-  // const isCryptoAdded = props.Coins.isAdded;
+  // const isCryptoAdded = props.coin.isAdded;
   const [isCryptoAdded, setisCryptoAdded] = useState(false);
   // console.log(isCryptoAdded);
 
   useEffect(() => {
-    setisCryptoAdded(props.Coins.isAdded);
+    setisCryptoAdded(props.coin.isAdded);
   }, [props]);
-
+  // console.log();
   return (
     <div>
-      <h1>{props.Coins.name}</h1>
-      <p>Symbol: {props.Coins.symbol}</p>
-      <p>Rank: {props.Coins.rank}</p>
-      <p>Price: {props.Coins.priceUsd} $</p>
-      <p>Change Percent 24 hours: {props.Coins.changePercent24Hr} %</p>
+      <h1>{props.coin.name}</h1>
+      <p>Symbol: {props.coin.symbol}</p>
+      <p>Rank: {props.coin.rank}</p>
+      <p>Price: {props.coin.priceUsd} $</p>
+      <p>Change Percent 24 hours: {props.coin.changePercent24Hr} %</p>
       <button
         onClick={() =>
           isCryptoAdded
-            ? props.RemoveCryptoCoin(props.Coins)
-            : props.submitHandler(props.Coins)
+            ? props.RemoveCryptoCoin(props.coin)
+            : props.submitHandler(props.coin)
         }
       >
         {isCryptoAdded ? "Remove" : "Add Coin"}
       </button>
+      <Link to={`/coins/${props.coin.id}`}> Go to </Link>
     </div>
   );
 }

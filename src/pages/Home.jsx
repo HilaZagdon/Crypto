@@ -119,7 +119,7 @@ function Home(props) {
       <div>
         {Coins.map((item, i) => (
           <CoinCard
-            Coins={item}
+            coin={item}
             RemoveCryptoCoin={RemoveCryptoCoin}
             submitHandler={submitHandler}
             key={`co_${i}`}
