@@ -1,6 +1,7 @@
 import React from "react";
 import { getAuth, signOut } from "firebase/auth";
 import { Link } from "react-router-dom";
+import "./NavBar.css";
 
 function NavBar({ user }) {
   const auth = getAuth();
@@ -14,9 +15,12 @@ function NavBar({ user }) {
       )}
 
       {user ? (
-        <button onClick={() => signOut(auth)} className="SignOutBtn">
-          Sign Out
-        </button>
+        <div className="DivForSignOutBtn">
+          <button onClick={() => signOut(auth)} className="SignOutBtn">
+            Sign Out
+          </button>
+          <p>{user.email}</p>
+        </div>
       ) : null}
     </nav>
   );

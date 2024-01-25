@@ -1,0 +1,14 @@
+.NavBarDiv {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  column-gap: 2rem;
+  height: 5rem;
+}
+
+.DivForSignOutBtn {
+  display: flex;
+  align-items: center;
+  column-gap: 2rem;
+  height: 5rem;
+}
