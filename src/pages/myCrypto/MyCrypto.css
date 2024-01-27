@@ -1,0 +1,30 @@
+.MyCryptoDiv {
+  display: flex;
+  justify-content: flex-start; 
+  align-items: flex-start; 
+  flex-wrap: wrap;
+  padding-top: 2rem;
+  background-image: url(https://as1.ftcdn.net/v2/jpg/02/50/05/24/1000_F_250052440_DH5w95hlDFU1x55YyZdHJgau0C8bnx8r.jpg);
+  background-attachment: fixed;
+  min-height: 38.5rem;
+  padding-left: 0.5rem;
+}
+
+.CoinCardDiv {
+  margin-top: 0;
+}
+
+.MyCryptoDivInner {
+  margin-top: 0;
+  flex: 1 0 calc(33% - 10px); 
+  max-width: calc(33% - 10px); 
+  margin-right: 10px; 
+}
+
+.MyCryptoDivInner:nth-child(2n) {
+  justify-content: center;
+}
+
+.MyCryptoDivInner:nth-child(3n) {
+  justify-content: flex-end;
+}

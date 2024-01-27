@@ -7,8 +7,8 @@ import { onAuthStateChanged } from "firebase/auth";
 import { db, auth } from "./Config/firebaseConfig";
 import Navbar from "./components/navbar/NavBar";
 import Auth from "./pages/Auth";
-import MyCrypto from "./pages/MyCrypto";
-import SingleCoin from "./pages/SingleCoin";
+import MyCrypto from "./pages/myCrypto/MyCrypto";
+import SingleCoin from "./pages/myCrypto/singleCoin/SingleCoin";
 import NotFound from "./components/NotFound";
 
 function App() {
@@ -85,6 +85,18 @@ function App() {
                 setCryptos={setCryptos}
                 Cryptos={Cryptos}
                 setUser={setUser}
+              />
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <Home
+                setCryptos={setCryptos}
+                Cryptos={Cryptos}
+                getMyCrypto={getMyCrypto}
+                user={user}
+                CryptoCoinCollectionRef={CryptoCoinCollectionRef}
               />
             }
           />

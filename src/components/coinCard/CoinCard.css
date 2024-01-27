@@ -1,0 +1,55 @@
+.CoinCardDiv {
+  background-color: rgba(240, 227, 130, 0.973);
+  margin: 2rem;
+  height: 25rem;
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease,
+    background-color 0.3s ease;
+ border: 15px solid rgb(98, 83, 25);
+  -webkit-mask-image: linear-gradient(
+    45deg,
+    #000 25%,
+    rgba(255, 255, 255, 0.518) 50%,
+    #000 75%
+  );
+  mask-image: linear-gradient(
+    45deg,
+    #000 25%,
+    rgba(255, 255, 255, 0.491) 50%,
+    #000 75%
+  );
+  -webkit-mask-size: 450%;
+  mask-size: 450%;
+  -webkit-mask-position: 0;
+  mask-position: 0;
+  position: relative;
+}
+
+.CoinCardDiv:hover {
+  transform: scale(1.1);
+  box-shadow: 5 5 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease,
+    mask-position 2s ease, -webkit-mask-position 2s ease;
+  -webkit-mask-position: 120%;
+  mask-position: 120%;
+  opacity: 1;
+}
+
+.InnerCoinDiv {
+  padding: 2rem;
+}
+
+.CoinName {
+  font-size: 2.2rem;
+}
+
+.coinBtn {
+  position: absolute;
+  bottom: 7%; 
+}

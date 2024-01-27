@@ -1,0 +1,9 @@
+.homeDiv {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+padding-top: 2rem;
+  background-image: url(https://as1.ftcdn.net/v2/jpg/02/50/05/24/1000_F_250052440_DH5w95hlDFU1x55YyZdHJgau0C8bnx8r.jpg);
+  background-attachment: fixed;
+}

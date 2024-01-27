@@ -1,0 +1,27 @@
+.SingleCoinDiv {
+  background-image: url(https://as1.ftcdn.net/v2/jpg/02/50/05/24/1000_F_250052440_DH5w95hlDFU1x55YyZdHJgau0C8bnx8r.jpg);
+  background-attachment: fixed;
+  padding-top: 2rem;
+
+  min-height: 38.5rem;
+}
+
+.SingleCoinDivInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgba(240, 227, 130, 0.728);
+  width: 50%;
+  border-radius: 50px;
+  margin: auto;
+  padding: 2rem; 
+  font-size: 1.3rem;
+  line-height: normal;
+  border: 15px solid rgb(98, 83, 25);
+}
+.H1Name{
+  margin: 0;
+font-size: 6rem;
+font-weight: 900;
+}

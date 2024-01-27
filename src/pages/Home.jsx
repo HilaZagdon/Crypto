@@ -8,8 +8,9 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import CoinCard from "../components/CoinCard";
+import CoinCard from "../components/coinCard/CoinCard";
 import { db } from "../Config/firebaseConfig";
+import "./Home.css";
 
 function Home(props) {
   const [Coins, setCoins] = useState([]);
@@ -116,7 +117,7 @@ function Home(props) {
 
   return (
     props.Cryptos && (
-      <div>
+      <div className="homeDiv">
         {Coins.map((item, i) => (
           <CoinCard
             coin={item}
